@@ -1,0 +1,195 @@
+<div class="no-shadow" *ngIf="!errorMessage; else errorMsg">
+
+    <kui-progress-indicator *ngIf="loading"></kui-progress-indicator>
+
+    <!--
+
+    <mat-card-subtitle>Project</mat-card-subtitle>
+
+    <mat-card-title>
+        <span *ngIf="projectcode">{{ 'appLabels.form.project.title.edit' | translate }}</span>
+        <span *ngIf="!projectcode">{{ 'appLabels.form.project.title.new' | translate }}</span>
+    </mat-card-title>
+    -->
+
+    <!-- success message after updating TODO: kui-message doesn't exist yet in @knora/action -->
+    <!--<kui-message *ngIf="success" [message]="successMessage" [short]="true"></kui-message>-->
+
+    <!-- content -->
+    <form *ngIf="!loading" [formGroup]="form" class="form-content mat-card-content project-data">
+
+        <!-- short and long name -->
+        <mat-form-field class="small-field">
+            <input matInput
+                   placeholder="{{'appLabels.form.project.general.shortcode' | translate}} * "
+                   [maxlength]="shortcodeMaxLength"
+                   [formControl]="form.controls['shortcode']">
+            <mat-hint *ngIf="formErrors.shortcode">
+                {{ formErrors.shortcode }}
+            </mat-hint>
+        </mat-form-field>
+
+        <!-- short name -->
+        <mat-form-field class="medium-field">
+            <input matInput
+                   [maxlength]="shortnameMaxLength"
+                   placeholder="{{'appLabels.form.project.general.shortname' | translate}} * "
+                   [formControl]="form.controls['shortname']">
+            <mat-hint *ngIf="formErrors.shortname">
+                {{ formErrors.shortname }}
+            </mat-hint>
+        </mat-form-field>
+
+        <!-- long name -->
+        <mat-form-field class="large-field">
+            <input matInput
+                   placeholder="{{'appLabels.form.project.general.longname' | translate}} *"
+                   [formControl]="form.controls['longname']">
+            <mat-hint *ngIf="formErrors.longname">
+                {{ formErrors.longname }}
+            </mat-hint>
+        </mat-form-field>
+
+        <!-- description -->
+        <mat-form-field class="large-field">
+            <textarea matInput matTextareaAutosize [matAutosizeMinRows]="6" [matAutosizeMaxRows]="12"
+                      [placeholder]=" 'appLabels.form.project.general.description' | translate "
+                      [formControl]="form.controls['description']">
+            </textarea>
+            <mat-hint *ngIf="formErrors.description">
+                {{ formErrors.description }}
+            </mat-hint>
+        </mat-form-field>
+
+        <!-- institution -->
+        <!--
+        <mat-form-field class="large">
+            <input matInput
+                   placeholder="{{'appLabels.form.project.general.institution' | translate}}"
+                   [formControl]="projectDataForm.controls['institution']">
+            <mat-hint *ngIf="formErrors.institution">
+                {{ formErrors.institution }}
+            </mat-hint>
+        </mat-form-field>
+        -->
+        <!-- keywords -->
+        <mat-form-field class="large-field">
+            <mat-chip-list #chipList>
+                <mat-chip *ngFor="let tag of keywords" [selectable]="selectable"
+                          [removable]="project.status" (removed)="removeKeyword(tag)">
+                    {{tag}}
+                    <mat-icon matChipRemove *ngIf="project.status">cancel</mat-icon>
+                </mat-chip>
+                <input [placeholder]=" 'appLabels.form.project.general.keywords' | translate "
+                       [formControl]="form.controls['keywords']"
+                       [matChipInputFor]="chipList"
+                       [matChipInputSeparatorKeyCodes]="separatorKeyCodes"
+                       [matChipInputAddOnBlur]="addOnBlur"
+                       (matChipInputTokenEnd)="addKeyword($event)"/>
+            </mat-chip-list>
+
+            <!--
+            <mat-hint *ngIf="formErrors.keywords">
+                {{ formErrors.keywords }}
+            </mat-hint>
+            -->
+        </mat-form-field>
+
+        <!-- upload logo -->
+        <!--
+        <app-file-uploader (uploadStatus)="sipiUpload($event)"></app-file-uploader>
+        <!- the form needs an input field for the logo name
+            the following input will be hidden and it gets the file name from the app-file-uploader -->
+        <br>
+        <!-- dev control for image uploader
+                <input matInput [hidden]="false"
+                       [placeholder]=" 'appLabels.form.project.general.logo.name' | translate "
+                       [formControl]="projectDataForm.controls['logo']"
+                       formControlName="logo">
+                       -->
+        <!--
+                <div class="form-panel large" *ngIf="standalone; else stepperNav">
+                    &lt;!&ndash; delete / activate buttons in case of edit &ndash;&gt;
+                    <div *ngIf="edit">
+                        &lt;!&ndash; delete project &ndash;&gt;
+                        <button *ngIf="project.status"
+                                mat-button color="warn"
+                                (click)="deactivateProject($event, projectIri)">
+                            {{ 'appLabels.form.action.deactivate' | translate }}
+                        </button>
+                        &lt;!&ndash; activate project &ndash;&gt;
+                        <button *ngIf="!project.status"
+                                mat-button color="warn"
+                                (click)="activateProject($event, projectIri)">
+                            {{ 'appLabels.form.action.activate' | translate }}
+                        </button>
+                    </div>
+
+
+                    <span class="fill-remaining-space"></span>
+
+                    <button mat-button type="button" color="primary" (click)="submitData()" [disabled]="!projectDataForm.valid">
+                        <span *ngIf="edit">{{ 'appLabels.form.action.update' | translate }}</span>
+                        <span *ngIf="!edit">{{ 'appLabels.form.action.submit' | translate }}</span>
+                    </button>
+                </div>
+
+
+                <ng-template #stepperNav>
+                    <div class="form-panel large">
+                        <button mat-button matStepperPrevious>{{ 'appLabels.form.action.back' | translate }}</button>
+                        <span class="fill-remaining-space"></span>
+                        <button mat-button color="primary" matStepperNext [disabled]="!projectDataForm.valid"
+                                (click)="submitData()">
+                            {{ 'appLabels.form.action.next' | translate }}
+                        </button>
+                    </div>
+                </ng-template>
+                -->
+        <div class="form-panel form-action">
+            <span>
+                <button mat-button
+                        (click)="reset(project)">
+                    {{ 'appLabels.form.action.reset' | translate }}
+                </button>
+
+            </span>
+            <span class="fill-remaining-space"></span>
+            <span>
+                <button mat-raised-button
+                        type="button"
+                        color="primary"
+                        (click)="submitData()"
+                        [disabled]="!form.valid || (projectcode && !project.status)">
+                    <span *ngIf="projectcode">{{ 'appLabels.form.action.update' | translate }}</span>
+                    <span *ngIf="!projectcode">{{ 'appLabels.form.action.submit' | translate }}</span>
+                </button>
+            </span>
+        </div>
+    </form>
+
+    <!-- button to delete / activate project-->
+    <div *ngIf="projectcode && project">
+        <mat-divider class="more-space"></mat-divider>
+        <div class="form-content">
+            <div *ngIf="project.status">
+                <h3>Archive this project</h3>
+                <div class="center">
+                    <button mat-button [color]="'warn'" (click)="archiveProject(project.id)">ARCHIVE</button>
+                </div>
+            </div>
+            <div *ngIf="!project.status">
+                <h3>This project is already archived. Do you want to reactivate it?</h3>
+                <div class="center">
+                    <button mat-button [color]="'primary'" (click)="activateProject(project.id)">ACTIVATE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- in the case of an API error: show the error message -->
+<ng-template #errorMsg>
+    <!--<kui-message *ngIf="errorMessage" [message]="errorMessage"></kui-message>-->
+</ng-template>

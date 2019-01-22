@@ -1,0 +1,20 @@
+.logo {
+
+  margin-left: -16px;
+
+  .mat-icon {
+    height: 40px;
+
+    &.large {
+      width: 180px;
+    }
+
+    &.small {
+      margin-left: 12px;
+      width: 40px;
+    }
+  }
+
+}
+
+
