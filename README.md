@@ -1,11 +1,13 @@
 # Knora Admin
 
-This app is for Knora system administrators.
+This app will be for Knora system administrators but it's not ready to use!
+**If you are looking for a working admin app, please go to --> [KUIRL](https://github.com/dhlab-basel/Kuirl)**
+
+---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
 
 Developed by the [DaSCH Team](https://dasch.swiss) in Basel.
-
 
 
 ## Development server
