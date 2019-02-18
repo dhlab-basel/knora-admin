@@ -1,12 +1,12 @@
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KuiActionModule } from '@knora/action';
-import { JwtInterceptor, KuiAuthenticationModule } from '@knora/authentication';
-import { KuiCoreModule } from '@knora/core';
+import {httpInterceptorProviders, KuiAuthenticationModule} from '@knora/authentication';
+import { KuiCoreModule, KuiCoreConfigToken } from '@knora/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from '../environments/environment';
@@ -56,12 +56,26 @@ import { UserComponent } from './user/user.component';
 import { SelectGroupComponent } from './project/collaboration/select-group/select-group.component';
 import { FullframeDialogComponent } from './main/dialog/fullframe-dialog/fullframe-dialog.component';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
+import {AppInitService} from './app-init.service';
+import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
 
 
 // Translate: AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient, 'assets/i18n/', '.json');
 }
+
+export function initializeApp(appInitService: AppInitService) {
+    return (): Promise<any> => {
+        return appInitService.Init();
+    };
+}
+
+export const KuiCoreConfigTokenProvider = {
+    provide: KuiCoreConfigToken,
+    useFactory: () => AppInitService.coreConfig
+};
+
 
 @NgModule({
     declarations: [
@@ -117,12 +131,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         HttpClientModule,
         KuiActionModule,
         KuiAuthenticationModule,
-        KuiCoreModule.forRoot({
-            name: environment.appName,
-            api: environment.apiUrl,
-            media: environment.iiifUrl,
-            app: environment.appUrl,
-        }),
+        KuiCoreModule,
         MaterialModule,
         ReactiveFormsModule,
         TranslateModule.forRoot({
@@ -138,7 +147,18 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         FullframeDialogComponent
     ],
     providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+        AppInitService,
+        {
+            provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppInitService], multi: true
+        },
+        KuiCoreConfigTokenProvider,
+        {
+            provide: MAT_DIALOG_DEFAULT_OPTIONS,
+            useValue: {
+                hasBackdrop: false
+            }
+        },
+        httpInterceptorProviders
     ],
     bootstrap: [AppComponent]
 })

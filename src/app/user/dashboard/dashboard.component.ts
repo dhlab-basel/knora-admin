@@ -33,12 +33,12 @@ export class DashboardComponent implements OnInit {
         /**
          * set the cache here for current/logged-in user
          */
-        this._cache.get(this.username, this._usersService.getUser(this.username));
+        this._cache.get(this.username, this._usersService.getUserByUsername(this.username));
 
         /**
          * and get the user information from the cache
          */
-        this._cache.get(this.username, this._usersService.getUser(this.username)).subscribe(
+        this._cache.get(this.username, this._usersService.getUserByUsername(this.username)).subscribe(
             (response: User) => {
                 this.user = response;
                 this.loading = false;
