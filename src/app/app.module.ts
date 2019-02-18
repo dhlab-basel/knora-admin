@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -7,8 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KuiActionModule } from '@knora/action';
 import {httpInterceptorProviders, KuiAuthenticationModule} from '@knora/authentication';
 import { KuiCoreModule, KuiCoreConfigToken } from '@knora/core';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +20,6 @@ import { LoginComponent } from './main/login/login.component';
 import { MainComponent } from './main/main.component';
 import { NavigationItemComponent } from './main/navigation/navigation-item/navigation-item.component';
 import { NavigationComponent } from './main/navigation/navigation.component';
-import { SelectLanguageComponent } from './main/select-language/select-language.component';
 import { MaterialModule } from './material-module';
 import { BoardComponent } from './project/board/board.component';
 import { AddUserComponent } from './project/collaboration/add-user/add-user.component';
@@ -58,12 +55,6 @@ import { FullframeDialogComponent } from './main/dialog/fullframe-dialog/fullfra
 import { DashboardComponent } from './user/dashboard/dashboard.component';
 import {AppInitService} from './app-init.service';
 import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
-
-
-// Translate: AoT requires an exported function for factories
-export function HttpLoaderFactory(httpClient: HttpClient) {
-    return new TranslateHttpLoader(httpClient, 'assets/i18n/', '.json');
-}
 
 export function initializeApp(appInitService: AppInitService) {
     return (): Promise<any> => {
@@ -117,7 +108,6 @@ export const KuiCoreConfigTokenProvider = {
         LoginComponent,
         LoremIpsumComponent,
         AccountComponent,
-        SelectLanguageComponent,
         ProjectsComponent,
         SelectGroupComponent,
         FullframeDialogComponent,
@@ -133,14 +123,7 @@ export const KuiCoreConfigTokenProvider = {
         KuiAuthenticationModule,
         KuiCoreModule,
         MaterialModule,
-        ReactiveFormsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        })
+        ReactiveFormsModule
     ],
     entryComponents: [
         ConfirmDialogComponent,
