@@ -1,4 +1,5 @@
 export const environment = {
+    name: 'dev',
     production: true,
     appName: 'KUIRL',
     appUrl: 'http://localhost:4200',

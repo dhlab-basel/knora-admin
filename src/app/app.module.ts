@@ -5,9 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KuiActionModule } from '@knora/action';
-import {httpInterceptorProviders, KuiAuthenticationModule} from '@knora/authentication';
+import { KuiAuthenticationModule} from '@knora/authentication';
 import { KuiCoreModule, KuiCoreConfigToken } from '@knora/core';
-import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -140,8 +139,7 @@ export const KuiCoreConfigTokenProvider = {
             useValue: {
                 hasBackdrop: false
             }
-        },
-        httpInterceptorProviders
+        }
     ],
     bootstrap: [AppComponent]
 })

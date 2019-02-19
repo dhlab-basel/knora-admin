@@ -29,7 +29,7 @@ export class AppInitService {
     Init() {
 
         return new Promise<void>((resolve, reject) => {
-            // console.log('AppInitService.init() called');
+            console.log('AppInitService.init() called');
             // do your initialisation stuff here
 
             const data = <IAppConfig> window['tempConfigStorage'];
