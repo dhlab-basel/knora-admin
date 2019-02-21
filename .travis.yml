@@ -10,6 +10,7 @@ cache:
 
 install:
   - npm install -g yarn
+  - npm install -g @angular/cli
 
 script:
   - yarn lint
