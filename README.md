@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dhlab-basel/knora-admin.svg?branch=master)](https://travis-ci.org/dhlab-basel/knora-admin)
+
 # Knora Admin
 
 This app will be for Knora system administrators.
