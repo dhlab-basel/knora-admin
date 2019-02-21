@@ -13,6 +13,6 @@ install:
   - npm install -g @angular/cli
 
 script:
-  - yarn install --prod
+  - yarn install --prod=false
   - yarn lint
   - yarn build-prod
