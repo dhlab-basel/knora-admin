@@ -12,11 +12,6 @@
       "element",
       "app",
       "kebab-case"
-    ],
-    "typedef": [
-      true,
-      "parameter"
-    ],
-    "no-inferrable-types": false
+    ]
   }
 }

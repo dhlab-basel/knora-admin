@@ -5,7 +5,7 @@
 export const environment = {
     name: 'dev',
     production: false,
-    appName: 'KUIRL',
+    appName: 'Knora-Admin',
     appUrl: 'http://localhost:4200',
     apiUrl: 'http://localhost:3333',
     iiifUrl: 'http://localhost:1024'
