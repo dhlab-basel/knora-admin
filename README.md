@@ -1,24 +1,64 @@
 # Knora Admin
 
-This app will be for Knora system administrators but it's not ready to use!
-
-**If you are looking for a working admin app, please go to --> [KUIRL](https://github.com/dhlab-basel/Kuirl)**
+This app will be for Knora system administrators.
 
 ---
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
 Developed by the [DaSCH Team](https://dasch.swiss) in Basel.
 
+## Prerequisites
 
-## Development server
+We develop the Knora-ui modules with Angular 6, especially with Angular-cli, which requires the following tools:
 
-### Install
+### Yarn
+We use [yarn](https://yarnpkg.com/en/) instead of npm. To install yarn on macOS:
+
+```bash
+$ brew install yarn
+```
+
+For other platforms, please go to the yarn website.
+
+
+### Node
+Install [Node](https://nodejs.org/en/download/) in version >=4 <=9. We recommend to use version 8.9.0. The easiest way to install node
+in the correct version is to use ['n'](https://github.com/tj/n):
+
+ ```bash
+ $ yarn global add n
+ $ n v8.9.0
+ ```
+
+## First steps
+
+Install the node packages with:
+```bash
+$ yarn install --prod=false
+```
+
+build with:
+
+```bash
+$ yarn build
+```
+
+run with:
+
+```bash
+$ ng s
+or
+$ ng s --prod
+```
+
+
+## Install
 Run `yarn install --prod=false` to install all the package dependencies.
 
-### Serve
+## Serve
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. 
 
 ## Code scaffolding
 

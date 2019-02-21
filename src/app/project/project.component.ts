@@ -5,6 +5,7 @@ import { ApiServiceError, GroupsService, Project, ProjectsService } from '@knora
 import { CacheService } from '../main/cache/cache.service';
 import { MenuItem } from '../main/declarations/menu-item';
 
+
 @Component({
     selector: 'app-project',
     templateUrl: './project.component.html',

@@ -21,7 +21,7 @@
         <!-- short and long name -->
         <mat-form-field class="small-field">
             <input matInput
-                   placeholder="{{'appLabels.form.project.general.shortcode' | translate}} * "
+                   placeholder="{{'appLabels.form.project.general.shortcode'}} * "
                    [maxlength]="shortcodeMaxLength"
                    [formControl]="form.controls['shortcode']">
             <mat-hint *ngIf="formErrors.shortcode">
@@ -33,7 +33,7 @@
         <mat-form-field class="medium-field">
             <input matInput
                    [maxlength]="shortnameMaxLength"
-                   placeholder="{{'appLabels.form.project.general.shortname' | translate}} * "
+                   placeholder="{{'appLabels.form.project.general.shortname'}} * "
                    [formControl]="form.controls['shortname']">
             <mat-hint *ngIf="formErrors.shortname">
                 {{ formErrors.shortname }}
@@ -43,7 +43,7 @@
         <!-- long name -->
         <mat-form-field class="large-field">
             <input matInput
-                   placeholder="{{'appLabels.form.project.general.longname' | translate}} *"
+                   placeholder="{{'appLabels.form.project.general.longname'}} *"
                    [formControl]="form.controls['longname']">
             <mat-hint *ngIf="formErrors.longname">
                 {{ formErrors.longname }}
@@ -53,7 +53,7 @@
         <!-- description -->
         <mat-form-field class="large-field">
             <textarea matInput matTextareaAutosize [matAutosizeMinRows]="6" [matAutosizeMaxRows]="12"
-                      [placeholder]=" 'appLabels.form.project.general.description' | translate "
+                      [placeholder]=" 'appLabels.form.project.general.description' "
                       [formControl]="form.controls['description']">
             </textarea>
             <mat-hint *ngIf="formErrors.description">
@@ -80,7 +80,7 @@
                     {{tag}}
                     <mat-icon matChipRemove *ngIf="project.status">cancel</mat-icon>
                 </mat-chip>
-                <input [placeholder]=" 'appLabels.form.project.general.keywords' | translate "
+                <input [placeholder]=" 'appLabels.form.project.general.keywords' "
                        [formControl]="form.controls['keywords']"
                        [matChipInputFor]="chipList"
                        [matChipInputSeparatorKeyCodes]="separatorKeyCodes"
@@ -150,7 +150,7 @@
             <span>
                 <button mat-button
                         (click)="reset(project)">
-                    {{ 'appLabels.form.action.reset' | translate }}
+                    {{ 'appLabels.form.action.reset' }}
                 </button>
 
             </span>
@@ -161,8 +161,8 @@
                         color="primary"
                         (click)="submitData()"
                         [disabled]="!form.valid || (projectcode && !project.status)">
-                    <span *ngIf="projectcode">{{ 'appLabels.form.action.update' | translate }}</span>
-                    <span *ngIf="!projectcode">{{ 'appLabels.form.action.submit' | translate }}</span>
+                    <span *ngIf="projectcode">{{ 'appLabels.form.action.update' }}</span>
+                    <span *ngIf="!projectcode">{{ 'appLabels.form.action.submit' }}</span>
                 </button>
             </span>
         </div>

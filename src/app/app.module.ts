@@ -61,12 +61,6 @@ export function initializeApp(appInitService: AppInitService) {
     };
 }
 
-export const KuiCoreConfigTokenProvider = {
-    provide: KuiCoreConfigToken,
-    useFactory: () => AppInitService.coreConfig
-};
-
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -133,7 +127,9 @@ export const KuiCoreConfigTokenProvider = {
         {
             provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppInitService], multi: true
         },
-        KuiCoreConfigTokenProvider,
+        {
+            provide: KuiCoreConfigToken, useFactory: () => AppInitService.coreConfig
+        },
         {
             provide: MAT_DIALOG_DEFAULT_OPTIONS,
             useValue: {

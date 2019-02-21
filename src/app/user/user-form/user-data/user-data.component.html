@@ -14,7 +14,7 @@
 
         <!-- email -->
         <mat-form-field class="large-field">
-            <input matInput type="email" [formControl]="form.controls['email']" placeholder="{{ 'appLabels.form.user.general.email' | translate }} *">
+            <input matInput type="email" [formControl]="form.controls['email']" placeholder="{{ 'appLabels.form.user.general.email' }} *">
             <mat-hint *ngIf="formErrors.email">
                 {{ formErrors.email }}
             </mat-hint>
@@ -22,7 +22,7 @@
 
         <!-- username -->
         <mat-form-field class="large-field">
-            <input matInput type="text" autocomplete="username"  [formControl]="form.controls['username']" placeholder="{{ 'appLabels.form.user.general.username' | translate }} *">
+            <input matInput type="text" autocomplete="username"  [formControl]="form.controls['username']" placeholder="{{ 'appLabels.form.user.general.username' }} *">
             <mat-hint *ngIf="formErrors.username">
                 {{ formErrors.username }}
             </mat-hint>
@@ -30,7 +30,7 @@
 
         <!-- given name -->
         <mat-form-field class="small-field">
-            <input matInput [formControl]="form.controls['givenName']" placeholder="{{ 'appLabels.form.user.general.givenName' | translate }} *">
+            <input matInput [formControl]="form.controls['givenName']" placeholder="{{ 'appLabels.form.user.general.givenName' }} *">
             <mat-hint *ngIf="formErrors.givenName">
                 {{ formErrors.givenName }}
             </mat-hint>
@@ -38,7 +38,7 @@
 
         <!-- family name -->
         <mat-form-field class="medium-field">
-            <input matInput [formControl]="form.controls['familyName']" placeholder="{{ 'appLabels.form.user.general.familyName' | translate }} *">
+            <input matInput [formControl]="form.controls['familyName']" placeholder="{{ 'appLabels.form.user.general.familyName' }} *">
             <mat-hint *ngIf="formErrors.familyName">
                 {{ formErrors.familyName }}
             </mat-hint>
@@ -46,7 +46,7 @@
 
         <!-- password -->
         <mat-form-field class="large-field" *ngIf="!this.standalone">
-            <input matInput [type]="showPassword ? 'text' : 'password'" autocomplete="new-password" [formControl]="form.controls['password']" placeholder="{{ 'appLabels.form.user.general.password' | translate }} *">
+            <input matInput [type]="showPassword ? 'text' : 'password'" autocomplete="new-password" [formControl]="form.controls['password']" placeholder="{{ 'appLabels.form.user.general.password' }} *">
 
             <button mat-button matSuffix mat-icon-button class="input-icon" attr.aria-label="{{showPassword ? 'Hide password' : 'Show password'}}"
                 (click)="toggleVisibility()">
@@ -61,7 +61,7 @@
 
         <mat-form-field class="large-field">
 
-            <mat-select [formControl]="form.controls['lang']" [placeholder]="'appLabels.form.user.general.language' | translate">
+            <mat-select [formControl]="form.controls['lang']" [placeholder]="'appLabels.form.user.general.language'">
                 <mat-option *ngFor="let lang of languagesList" [value]="lang.id">
                     {{ lang.name }}
                 </mat-option>
@@ -72,16 +72,16 @@
         <div class="form-panel large-field" *ngIf="standalone; else stepperNav">
             <span class="fill-remaining-space"></span>
             <button mat-button type="button" color="primary" (click)="submitData()" [disabled]="!form.valid">
-                {{ 'appLabels.form.action.update' | translate }}
+                {{ 'appLabels.form.action.update' }}
             </button>
         </div>
 
         <ng-template #stepperNav>
             <div class="form-panel large-field">
-                <button mat-button matStepperPrevious>{{ 'appLabels.form.action.back' | translate }}</button>
+                <button mat-button matStepperPrevious>{{ 'appLabels.form.action.back' }}</button>
                 <span class="fill-remaining-space"></span>
                 <button mat-button color="primary" matStepperNext [disabled]="!form.valid" (click)="submitData()">
-                    {{ 'appLabels.form.action.next' | translate }}
+                    {{ 'appLabels.form.action.next' }}
                 </button>
             </div>
         </ng-template>

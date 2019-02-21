@@ -13,7 +13,7 @@
             <div *ngSwitchCase="'UserFormComponent'" class="form-content">
 
                 <mat-card-subtitle>User</mat-card-subtitle><br>
-                <mat-card-title>{{'appLabels.form.user.title.' + mode | translate}}</mat-card-title>
+                <mat-card-title>{{'appLabels.form.user.title.' + mode}}</mat-card-title>
 
                 <app-user-form></app-user-form>
             </div>
@@ -22,7 +22,7 @@
             <div *ngSwitchCase="'ProjectFormComponent'" class="form-content">
 
                 <mat-card-subtitle>Project</mat-card-subtitle><br>
-                <mat-card-title>{{'appLabels.form.project.title.new' | translate}}</mat-card-title>
+                <mat-card-title>{{'appLabels.form.project.title.new'}}</mat-card-title>
 
                 <app-project-form></app-project-form>
             </div>
