@@ -14,13 +14,13 @@ function bootstrapFailed(hint: any) {
   console.error('bootstrap-failed - hint: ', hint);
 }
 
-console.log('environment.name: ', environment.name);
+// console.log('environment.name: ', environment.name);
 
 fetch(`config/config.${environment.name}.json`)
     .then(response => response.json())
     .then(config => {
 
-        console.log('config', config);
+        // console.log('config', config);
 
         if (!config || !config['appName']) {
           bootstrapFailed(config);
@@ -30,7 +30,7 @@ fetch(`config/config.${environment.name}.json`)
       // Store the response somewhere that your ConfigService can read it.
       window['tempConfigStorage'] = config;
 
-      console.log('config', config);
+      // console.log('config', config);
 
       platformBrowserDynamic()
           .bootstrapModule(AppModule)

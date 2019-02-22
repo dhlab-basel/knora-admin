@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MenuItem } from '../declarations/menu-item';
+import { MenuItem } from '../models/menu-item';
 
 @Component({
     selector: 'app-navigation',

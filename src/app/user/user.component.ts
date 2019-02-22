@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '@knora/core';
 import { CacheService } from '../main/cache/cache.service';
-import { MenuItem } from '../main/declarations/menu-item';
+import { MenuItem } from '../main/models/menu-item';
 
 @Component({
     selector: 'app-user',

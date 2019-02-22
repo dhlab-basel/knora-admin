@@ -167,6 +167,7 @@ export class UserPasswordComponent implements OnInit {
 
         this.loading = true;
 
+        /* FIMXE: need a solution
         this._usersService.updateUser(this.username, this.userPasswordForm.value).subscribe(
             (result: User) => {
                 // console.log(this.userPasswordForm.value);
@@ -186,6 +187,7 @@ export class UserPasswordComponent implements OnInit {
                 this.loading = false;
             }
         );
+        */
 
         this.oldPswd = !this.oldPswd;
 
@@ -208,6 +210,8 @@ export class UserPasswordComponent implements OnInit {
         // console.log(this.userIri);
         // console.log(this.requesterPasswordForm.value);
         // console.log(this.pswdData);
+
+        /* FIXME: need a solution
         this._usersService.updateUser(this.username, this.pswdData).subscribe(
             (result: User) => {
                 // console.log(result);
@@ -226,7 +230,9 @@ export class UserPasswordComponent implements OnInit {
 
                 this.loading = false;
             }
+
         );
+        */
 
         this.oldPswd = !this.oldPswd;
 

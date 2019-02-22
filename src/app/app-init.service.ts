@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { KuiCoreConfig } from '@knora/core';
 
 export interface IAppConfig {
 
@@ -21,7 +20,7 @@ export interface IAppConfig {
 export class AppInitService {
 
     static settings: IAppConfig;
-    static coreConfig: KuiCoreConfig;
+    // static coreConfig: KuiCoreConfig;
 
     constructor() {
     }
@@ -36,12 +35,14 @@ export class AppInitService {
             // console.log('AppInitService: json', data);
             AppInitService.settings = data;
 
+            /*
             AppInitService.coreConfig = <KuiCoreConfig> {
                 name: AppInitService.settings.appName,
                 api: AppInitService.settings.apiURL,
                 media: AppInitService.settings.iiifURL,
                 app: AppInitService.settings.appURL
             };
+            */
 
             resolve();
         });

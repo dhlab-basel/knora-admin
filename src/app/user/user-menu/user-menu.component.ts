@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '@knora/authentication';
-import { MenuItem } from '../../main/declarations/menu-item';
+import { MenuItem } from '../../main/models/menu-item';
 
 @Component({
   selector: 'app-user-menu',
