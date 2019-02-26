@@ -7,10 +7,5 @@ import { Title } from '@angular/platform-browser';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-    constructor(private _titleService: Title) {
-        // set the page title
-        this._titleService.setTitle('Knora Admin');
-    }
-
+    title = 'Knora Admin';
 }
