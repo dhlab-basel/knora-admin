@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-prod": "ng build --prod",
+    "build-prod": "ng build --prod --build-optimizer",
     "yalc-add": "yalc add @knora/action && yalc add @knora/authentication && yalc add @knora/core && yalc add @knora/search && yalc add @knora/viewer",
     "test": "ng test",
     "lint": "ng lint",
